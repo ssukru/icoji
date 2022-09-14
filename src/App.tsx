@@ -3,9 +3,10 @@ import "./App.css";
 import emojis from "./constants/emojis";
 import { ColorResult, TwitterPicker } from "react-color";
 import { toPng } from "html-to-image";
+import Picker, { IEmojiData } from "emoji-picker-react";
 
 function App() {
-  const [selectedEmoji, setSelectedEmoji] = useState<string>("");
+  const [selectedEmoji, setSelectedEmoji] = useState<IEmojiData | undefined>();
   const [emojiSize, setEmojiSize] = useState<
     "small" | "medium" | "large" | "x-large" | "xx-large"
   >("medium");
@@ -19,6 +20,13 @@ function App() {
   }, [bgColor]);
 
   const previewRef = useRef<HTMLDivElement>(null);
+
+  const onEmojiClick = (
+    event: React.MouseEvent<Element, MouseEvent>,
+    emojiObject: IEmojiData
+  ) => {
+    setSelectedEmoji(emojiObject);
+  };
 
   const generateImage = async () => {
     const element = previewRef.current;
@@ -40,15 +48,25 @@ function App() {
     <div className="container">
       <div className="wrapper">
         <div className="emoji-wrapper">
-          {emojis.map((emoji, idx) => (
-            <div
-              key={`emoji - ${idx}`}
-              className="emoji"
-              onClick={() => setSelectedEmoji(emoji)}
-            >
-              {emoji}
-            </div>
-          ))}
+          <Picker
+            onEmojiClick={onEmojiClick}
+            disableSearchBar
+            disableSkinTonePicker
+            groupVisibility={{
+              flags: false,
+            }}
+            pickerStyle={{
+              width: "100%",
+              height: "100%",
+              backgroundColor: "#2c2c2c",
+              boxShadow: "none",
+              border: "none",
+              borderRadius: "1.25rem",
+              padding: "1rem",
+              gap: "1rem",
+              color: "#fff",
+            }}
+          />
         </div>
         <div className="preview-wrapper">
           <div
@@ -59,7 +77,7 @@ function App() {
             }}
           >
             <span className={`selected-emoji emoji-${emojiSize}`}>
-              {selectedEmoji}
+              {selectedEmoji?.emoji}
             </span>
           </div>
           <div className="emoji-size-button-wrapper">

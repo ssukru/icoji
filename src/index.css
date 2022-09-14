@@ -4,7 +4,7 @@
   line-height: 24px;
   font-weight: 400;
 
-  color-scheme: light dark;
+  color-scheme: dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
@@ -67,23 +67,23 @@ button:focus-visible {
 }
 
 /* ===== Scrollbar CSS ===== */
-  /* Firefox */
-  * {
-    scrollbar-width: auto;
-    scrollbar-color: #6f6f6f #242424;
-  }
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #6f6f6f #2c2c2c;
+}
 
-  /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
-    width: 16px;
-  }
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 16px;
+}
 
-  *::-webkit-scrollbar-track {
-    background: #242424;
-  }
+*::-webkit-scrollbar-track {
+  background: #2c2c2c;
+}
 
-  *::-webkit-scrollbar-thumb {
-    background-color: #6f6f6f;
-    border-radius: 10px;
-    border: 3px solid #2c2c2c;
-  }
+*::-webkit-scrollbar-thumb {
+  background-color: #6f6f6f;
+  border-radius: 10px;
+  border: 3px solid #2c2c2c;
+}

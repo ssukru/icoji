@@ -23,7 +23,7 @@
 }
 
 .preview-background {
-  background-color: greenyellow;
+  background-color: #eb144c;
   width: 256px;
   height: 256px;
   border-radius: 1.25rem;
@@ -35,14 +35,9 @@
 .emoji-wrapper {
   display: flex;
   flex: 2;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: space-between;
+  flex-direction: column;
   margin-right: 2rem;
-  overflow-y: scroll;
   max-height: calc(100vh - 8rem);
-  padding: 1rem;
 }
 
 .emoji {
